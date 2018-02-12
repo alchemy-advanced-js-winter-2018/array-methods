@@ -1,6 +1,7 @@
 const assert = require('assert');
 const map = require('../lib/map');
 const filter = require('../lib/filter');
+const findIndex = require('../lib/findIndex');
 
 describe('array methods', () => {
     it('map', () => {
@@ -48,5 +49,17 @@ describe('array methods', () => {
         });
 
         assert.deepEqual(index, [0, 1, 2]);
+    });
+
+    it('findIndex', () => {
+        const array = ['a', 'b', 'c'];
+
+        const ind = findIndex(array, (item, index) => {
+            if(item === 'b'){
+                return true;
+            }
+        });
+        assert.equal(ind, 1);
+        
     });
 });
