@@ -2,6 +2,7 @@ const assert = require('assert');
 const forEach = require('../lib/for-each');
 const map = require('../lib/map');
 const filter = require('../lib/filter');
+const findIndex = require('../lib/find-index');
 
 
 describe('array methods', () => {
@@ -36,4 +37,26 @@ describe('array methods', () => {
 
         assert.deepEqual(filtered, [6, 7, 8, 9]);
     });
+
+    it('findIndex', () => {
+        const array = [1, 2, 3, 4, 5];
+        const result = findIndex(array, (item, index) => {
+            if(item == 5) {
+                return true;
+            }
+        });
+        assert.equal(result, 4);
+    });
+
+    it('findIndex with item not present', () => {
+        const array = [1, 2, 3, 4, 5];
+        const result = findIndex(array, (item, index) => {
+            if(item == 6) {
+                return true;
+            }
+        });
+        assert.equal(result, -1);
+    });
+
+    
 });
