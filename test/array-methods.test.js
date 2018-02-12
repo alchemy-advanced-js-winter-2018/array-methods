@@ -3,6 +3,7 @@ const forEach = require('../lib/for-each');
 const map = require('../lib/map');
 const filter = require('../lib/filter');
 const findIndex = require('../lib/find-index');
+const every = require('../lib/every');
 
 
 describe('array methods', () => {
@@ -20,6 +21,7 @@ describe('array methods', () => {
 
         assert.equal(result, '123');
     });
+    
 
     it('map', () => {
         const array = [1, 2, 3];
@@ -27,8 +29,17 @@ describe('array methods', () => {
         const mapped = map(array, x => x + 1);
 
         assert.deepEqual(mapped, [2, 3, 4]);
-
     });
+
+
+    it('map length', () => {
+        const array = [1, 2, 3];
+
+        const mapped = map(array, x => x + 1);
+
+        assert.deepEqual(mapped.length, 3);
+    });
+
 
     it('filter', () => {
         const array = [4, 5, 6, 7, 8, 9];
@@ -38,25 +49,54 @@ describe('array methods', () => {
         assert.deepEqual(filtered, [6, 7, 8, 9]);
     });
 
+
     it('findIndex', () => {
         const array = [1, 2, 3, 4, 5];
         const result = findIndex(array, (item, index) => {
-            if(item == 5) {
+            if(item === 5) {
                 return true;
             }
         });
         assert.equal(result, 4);
     });
 
+
     it('findIndex with item not present', () => {
         const array = [1, 2, 3, 4, 5];
         const result = findIndex(array, (item, index) => {
-            if(item == 6) {
+            if(item === 6) {
                 return true;
             }
         });
         assert.equal(result, -1);
     });
+
+
+    it('every', () => {
+        const array = [1, 2, 3, 4, 5];
+        const result = every(array, (item, index) => {
+            if(item > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        });
+        assert.equal(result, true);
+    });
+
+
+    it('every for false', () => {
+        const array = [1, 2, 3, 4, 5];
+        const result = every(array, (item, index) => {
+            if(item < 0) {
+                return true;
+            } else {
+                return false;
+            }
+        });
+        assert.equal(result, false);
+    });
+
 
     
 });
