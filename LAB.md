@@ -51,7 +51,25 @@ Any holes in the array should be skipped (don't call the callback function).
 
 Returns the new array of "filtered" items.
 
-### 3. `reduce(array, callback [, initialValue])`
+### 3. `findIndex(array, callback)`
+
+Takes a callback of signature `(item, index) => {}` 
+and returns the index of the first item whose callback returns `true` or a truthy value.
+
+Any holes in the array should be skipped (don't call the callback function).
+
+Returns the index of the found item, `-1` if no item is found.
+
+### 4. `every(array, callback)`
+
+Takes a callback of signature `(item, index) => {}` 
+and returns an overall `true` value if **all** callback return `true` or a truthy value.
+
+Any holes in the array should be skipped (don't call the callback function).
+
+Returns the `true` if every item in the array has returned `true`, otherwise `false`.
+
+### 5. `reduce(array, callback [, initialValue])`
 
 Takes a callback of signature `(accumulator, item, index) => {}` and an (optional) 
 second `initialValue` parameter that is the initial value of the accumulator. After each function
@@ -63,25 +81,6 @@ first item as the `accumulator`, and the second array item as the `item`.
 Any holes in the array should be skipped (don't call the callback function).
 
 Returns the final accumulator value.
-
-### 4. `findIndex(array, callback)`
-
-Takes a callback of signature `(item, index) => {}` 
-and returns the index of the first item whose callback returns `true` or a truthy value.
-
-Any holes in the array should be skipped (don't call the callback function).
-
-Returns the index of the found item, `-1` if no item is found.
-
-### 5. `every(array, callback)`
-
-Takes a callback of signature `(item, index) => {}` 
-and returns an overall `true` value if **all** callback return `true` or a truthy value.
-
-Any holes in the array should be skipped (don't call the callback function).
-
-Returns the `true` if every item in the array has returned `true`, otherwise `false`.
-
 
 ## Rubric **10pts**
 * Each test: *1pt* (x 5 = 5pts)
