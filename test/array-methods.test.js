@@ -1,5 +1,6 @@
 const assert = require('assert');
 const forEach = require('../lib/for-each');
+const map = require('../lib/map');
 
 describe('array methods', () => {
 
@@ -17,5 +18,13 @@ describe('array methods', () => {
         assert.equal(result, '123');
     });
 
-    
+    it('map', () => {
+        const array = [1, 2, 3];
+
+        const mapped = map(array, x => x + 1);
+
+        assert.deepEqual(mapped, [2, 3, 4]);
+
+    });
+
 });
