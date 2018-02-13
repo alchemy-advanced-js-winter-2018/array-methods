@@ -31,6 +31,19 @@ describe('array methods', () => {
     });
 
 
+    it('map passes index as second argument', () => {
+        const array = [1, 2, 3];
+
+        const indexes = [];
+
+        map(array, (each, i) => {
+            indexes[i] = i;
+        });
+
+        assert.deepEqual(indexes, [0, 1, 2]);
+    });
+
+
     it('map length', () => {
         const array = [1, 2, 3];
 
@@ -49,10 +62,23 @@ describe('array methods', () => {
     });
 
 
+    it('filter callback passes optional index argument', () => {
+        const array = [1, 2, 3];
+        const indexes = [];
+        
+        filter(array, (each, i) => {
+            indexes[i] = i;
+        });
+
+        assert.deepEqual(indexes, [0, 1, 2]);
+    });
+
+
+
     it('findIndex', () => {
         const array = [1, 2, 3, 4, 5];
 
-        const result = findIndex(array, (item, index) => {
+        const result = findIndex(array, (item) => {
             
             if(item === 5) {
                 return true;
@@ -66,7 +92,7 @@ describe('array methods', () => {
     it('findIndex with item not present', () => {
         const array = [1, 2, 3, 4, 5];
 
-        const result = findIndex(array, (item, index) => {
+        const result = findIndex(array, (item) => {
             
             if(item === 6) {
                 return true;
@@ -77,10 +103,22 @@ describe('array methods', () => {
     });
 
 
+    it('findIndex callback passes optional index argument', () => {
+        const array = [1, 2, 3];
+        const indexes = [];
+            
+        findIndex(array, (each, i) => {
+            indexes[i] = i;
+        });
+
+        assert.deepEqual(indexes, [0, 1, 2]);
+    });
+
+
     it('every', () => {
         const array = [1, 2, 3, 4, 5];
 
-        const result = every(array, (item, index) => {
+        const result = every(array, (item) => {
            
             if(item > 0) {
                 return true;
@@ -93,10 +131,24 @@ describe('array methods', () => {
     });
 
 
+    it('every passes index as optional argument', () => {
+        const array = [1, 2, 3];
+
+        const indexes = [];
+        
+        every(array, (each, i) => {
+            indexes[i] = i;
+            return true;
+        });
+
+        assert.deepEqual(indexes, [0, 1, 2]);
+    });
+
+
     it('every for false', () => {
         const array = [1, 2, 3, 4, 5];
         
-        const result = every(array, (item, index) => {
+        const result = every(array, (item) => {
             
             if(item < 0) {
                 return true;
@@ -117,6 +169,19 @@ describe('array methods', () => {
         });
         
         assert.equal(result, 15);
+    });
+
+
+    it('reduce takes optional index argument', () => {
+        const array = [1, 2, 3];
+        const indexes = [];
+        
+        every(array, (each, i) => {
+            indexes[i] = i;
+            return true;
+        });
+
+        assert.deepEqual(indexes, [0, 1, 2]);
     });
 
 
