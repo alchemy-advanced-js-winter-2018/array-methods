@@ -3,6 +3,7 @@ const map = require('../lib/map');
 const filter = require('../lib/filter');
 const findIndex = require('../lib/findIndex');
 const every = require('../lib/every');
+const reduce = require('../lib/reduce');
 
 describe('array methods', () => {
     it('map', () => {
@@ -84,4 +85,13 @@ describe('array methods', () => {
         });
         assert.equal(result, true);
     });
+
+    it('reduce', () => {
+        const array = [1, 2, 3, 4];
+
+        const result = reduce(array, (acc, item, index) => { return acc += item}, 0);
+
+        assert.equal(result, 10);
+    });
+
 });
