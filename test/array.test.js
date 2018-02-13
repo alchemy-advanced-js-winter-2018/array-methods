@@ -89,7 +89,7 @@ describe('array methods', () => {
     it('reduce', () => {
         const array = [1, 2, 3, 4];
 
-        const result = reduce(array, (acc, item, index) => { return acc += item}, 0);
+        const result = reduce(array, (acc, item, index) => { return acc += item;});
 
         assert.equal(result, 10);
     });
