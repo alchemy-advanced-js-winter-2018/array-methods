@@ -2,6 +2,7 @@ const assert = require('assert');
 const map = require('../lib/map');
 const filter = require('../lib/filter');
 const findIndex = require('../lib/findIndex');
+const every = require('../lib/every');
 
 describe('array methods', () => {
     it('map', () => {
@@ -61,5 +62,26 @@ describe('array methods', () => {
         });
         assert.equal(ind, 1);
         
+    });
+
+    it('findIndex takes index as second argument', () => {
+        const array = ['a', 'b', 'c'];
+
+        const result = findIndex(array, (item, index) => {
+            // need test to check index   
+        });
+    });
+
+    it('every', () => {
+        const array = [1, 2, 3, 4];
+
+        const result = every(array, (item, index) => {
+            if(item > 0){
+                return true;
+            } else {
+                return false;
+            }
+        });
+        assert.equal(result, true);
     });
 });
