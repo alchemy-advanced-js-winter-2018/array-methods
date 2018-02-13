@@ -29,7 +29,7 @@ describe('array methods', () => {
     it('filter', () => {
         const array = [3, 4, 6, 7];
 
-        const filtered = filter(array, (each, i) => {
+        const filtered = filter(array, (each) => {
             if(each > 5){
                 return true;
             }
@@ -56,7 +56,7 @@ describe('array methods', () => {
     it('findIndex', () => {
         const array = ['a', 'b', 'c'];
 
-        const ind = findIndex(array, (item, index) => {
+        const ind = findIndex(array, (item) => {
             if(item === 'b'){
                 return true;
             }
@@ -67,16 +67,19 @@ describe('array methods', () => {
 
     it('findIndex takes index as second argument', () => {
         const array = ['a', 'b', 'c'];
+        
+        const index = [];
 
-        const result = findIndex(array, (item, index) => {
-            // need test to check index   
+        findIndex(array, (item, index) => { 
+            index[index] = index;
         });
+        assert.deepEqual(index, []);
     });
 
     it('every', () => {
         const array = [1, 2, 3, 4];
 
-        const result = every(array, (item, index) => {
+        const result = every(array, (item) => {
             if(item > 0){
                 return true;
             } else {
@@ -86,12 +89,35 @@ describe('array methods', () => {
         assert.equal(result, true);
     });
 
+    it('every takes index as second argument', () => {
+        const array = [1, 2, 3];
+
+        let index = [];
+
+        every(array, (item, i)=> {
+            index[i] = i;
+            return true;
+        });
+        assert.deepEqual(index, [0, 1, 2]);
+    });
+
     it('reduce', () => {
         const array = [1, 2, 3, 4];
 
-        const result = reduce(array, (acc, item, index) => { return acc += item;});
+        const result = reduce(array, (acc, item) => { return acc += item;});
 
         assert.equal(result, 10);
     });
+
+    //it('reduce takes index as second argument', () => {
+    //    const array = [1, 2, 3];
+
+    //    let index = [];
+
+    //    reduce(array, (item, i)=> {
+    //        index[i] = i;
+    //    });
+    //    assert.deepEqual(index, [0]);
+    //});
 
 });
