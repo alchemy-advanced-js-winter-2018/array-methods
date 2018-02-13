@@ -4,11 +4,10 @@ const map = require('../lib/map');
 const filter = require('../lib/filter');
 const findIndex = require('../lib/find-index');
 const every = require('../lib/every');
+const reduce = require('../lib/reduce');
 
 
 describe('array methods', () => {
-
-    // function testindexes(){};
 
     it('forEach', () => {
         const array = ['1', '2', '3'];
@@ -21,7 +20,7 @@ describe('array methods', () => {
 
         assert.equal(result, '123');
     });
-    
+
 
     it('map', () => {
         const array = [1, 2, 3];
@@ -98,5 +97,29 @@ describe('array methods', () => {
     });
 
 
-    
+    it('reduce', () => {
+        const array = [1, 2, 3, 4, 5];
+        const result = reduce(array, (sum, num, i)  => {
+            return sum + num;
+        });
+        assert.equal(result, 15);
+    });
+
+
+    it('reduce for multiplication', () => {
+        const array = [1, 2, 3, 4, 5];
+        const result = reduce(array, (acc, num, i)  => {
+            return acc * num;
+        });
+        assert.equal(result, 120);
+    });
+
+
+    it('reduce with initializer', () => {
+        const array = [1, 2, 3, 4, 5];
+        const result = reduce(array, (sum, num, i)  => {
+            return sum + num;
+        }, 5);
+        assert.equal(result, 20);
+    });
 });
